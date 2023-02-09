@@ -24,9 +24,23 @@ export default function App() {
         allDiv[10].classList.add("transition-all");
         allDiv[10].classList.add("duration-700");
 
-        document.getElementById("loading").classList.add("hidden");
-        document.getElementById("loading").classList.remove("flex");
         setIsButtonExist(true);
+        document.getElementById("loading").classList.add("opacity-0");
+        setTimeout(() => {
+          document.getElementById("loading").classList.add("-z-10");
+        }, 800);
+      }
+
+      if (
+        window.innerWidth > 768 &&
+        document.querySelector("canvas").style.width == "100%" &&
+        document.querySelector("canvas").style.height == "100%"
+      ) {
+        document.getElementById("loading").classList.add("opacity-0");
+        setTimeout(() => {
+          document.getElementById("loading").classList.add("-z-10");
+        }, 800);
+        clearInterval(intervalRef.current);
       }
     }, 200);
     return () => clearInterval(intervalRef.current);
